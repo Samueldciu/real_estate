@@ -1,0 +1,13 @@
+
+
+
+## Purpose
+This web app can estimate the price of your property and can help you in getting a fair price.It has been specifially built for San francisco.
+
+
+## Usage
+Ths app requires 4 kinds ofinput from the user: age of the property, number of bedrooms, carpet area in square feet and the lot size.
+
+Using these 4 inputs, the app predicts the price of the house. The model used for prediction has been trained on the san-francisco home sales data in the nutella package in R. The model chosen is a linear regression model.
+
+

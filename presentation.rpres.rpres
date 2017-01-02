@@ -1,0 +1,68 @@
+Course Project: Shiny Application and Reproducible pitch
+========================================================
+author: Samuel
+date: 28 December, 2016
+autosize: true
+
+Overview
+========================================================
+This was built as part of a deliverable for the course Developing Data Products as part of the Coursera Data Science Specialization.
+
+The app developed for the first part of the assignment demo is avalilable at: https://samuel123.shinyapps.io/Real_estate_prices/
+
+Source code for ui.R and server.R files are available on the GitHub repo: https://github.com/Samueldciu/real_estate/
+
+Functionality of app
+========================================================
+
+This app helps the user in getting a fair price for his property.
+
+The user has to provide the age of the house, number of bedrooms, carpet area in square feet and the plot size as input. Based on these inputs, the price of the house is predicted. The predictive model is built on the san francisco home sales dataset using a linear regression model.
+
+Scatter Plot 
+========================================================
+
+```{r, echo=FALSE}
+library(nutshell)
+data(sanfrancisco.home.sales)
+housing<- sanfrancisco.home.sales
+
+columns<- c("line", "county", "city", "latitude", "longitude","street" ,"zip", "neighborhood" , "month" ,"date")
+housing <- housing[,!(names(housing) %in% columns)]
+housing$age<- (2009 - housing$year)
+pairs(~price+age+squarefeet+bedrooms,data=housing, 
+      main="Simple Scatterplot Matrix")
+
+```
+
+Correlation
+========================================================
+<small>
+The target variable price is positively correlated with all the input variables.
+
+Price and bedrooms:
+```{r, echo=FALSE}
+attach(housing)
+cor(price,bedrooms,method="pearson",use="complete")
+
+```
+Price and age:
+```{r, echo=FALSE}
+attach(housing)
+cor(price,age,method="pearson",use="complete")
+
+```
+Price and squarefeet:
+```{r, echo=FALSE}
+attach(housing)
+cor(price,squarefeet,method="pearson",use="complete")
+
+```
+Price and lotsize:
+```{r, echo=FALSE}
+attach(housing)
+cor(price,lotsize,method="pearson",use="complete")
+
+```
+
+</small>
